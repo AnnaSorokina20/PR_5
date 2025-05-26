@@ -17,13 +17,13 @@ namespace HungarianSolver
                     Console.Write($"  рядок {i + 1}: ");
                     var parts = Console.ReadLine()!
                                 .Split(new[] { ' ', ',', ';', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (parts.Length != n) { Console.WriteLine("    ❌ Кількість елементів ≠ n, спробуйте ще раз."); continue; }
+                    if (parts.Length != n) { Console.WriteLine(" Кількість елементів не лорівнює n, спробуйте ще раз."); continue; }
                     try
                     {
                         for (int j = 0; j < n; j++) a[i, j] = int.Parse(parts[j]);
                         break;
                     }
-                    catch { Console.WriteLine("    ❌ Невірний формат числа, спробуйте ще раз."); }
+                    catch { Console.WriteLine(" Невірний формат числа, спробуйте ще раз."); }
                 }
             }
             return a;
@@ -144,9 +144,10 @@ namespace HungarianSolver
                     int starCol = Enumerable.Range(0, n).FirstOrDefault(j => starred[zRow, j]);
                     if (!starred[zRow, starCol])
                     {
-                        // будуємо черг. ланцюг «ризка-зірка» й перевертаємо позначки
+  
                         var seq = new List<(int r, int c)>();
-                        seq.Add((zRow, zCol));      // починаємо з ризки
+                        seq.Add((zRow, zCol));      
+
                         int r = zRow, col = zCol;
                         while (true)
                         {
